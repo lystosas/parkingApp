@@ -1,0 +1,86 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <form #formulario="ngForm" (submit)="onSubmit(formulario.value)">
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nit"
+                  name="nit"
+                  id="nit"
+                  ngModel
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Nombre Empresa"
+                  name="name"
+                  id="name"
+                  ngModel
+                />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Direccion"
+                  name="address"
+                  id="address"
+                  ngModel
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Telefono"
+                  name="phone"
+                  id="phone"
+                  ngModel
+                />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Celular"
+                  name="cellPhone"
+                  id="cellPhone"
+                  ngModel
+                />
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Minutos de Gracia"
+                  name="minuteOfGrace"
+                  id="minuteOfGrace"
+                  ngModel
+                />
+              </div>
+            </div>
+            <br />
+            <div>
+              <button class="btn btn-primary btn-sm" type="submit">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

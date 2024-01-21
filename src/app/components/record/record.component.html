@@ -1,0 +1,199 @@
+<!--Modal para del boton de nuevo, se captura la fecha, se coloca la placa y se selecciona el tipo de vehiculo-->
+<form #formulario="ngForm" (submit)="onSubmit(formulario.value)">
+  <div
+    class="modal fade"
+    id="my-modal"
+    tabindex="-1"
+    aria-labelledby="my-modal-label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="my-modal-label">Nuevo Vehiculo</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          @for (item of typeList; track $index) {
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              [name]="'typeVehicle'"
+              [id]="$index"
+              [value]="$index + 1"
+              ngModel
+            />
+            <label class="form-check-label" [for]="$index">
+              {{ item.name }}
+            </label>
+          </div>
+          }
+          <div class="mb-3">
+            <label for="placa" class="col-form-label">Placa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="placa"
+              name="placa"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="hora-ini" class="col-form-label"
+              >Fecha y Hora inicial</label
+            >
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              id="hora-ini"
+              name="starDate"
+              [(ngModel)]="fechaHoraActual"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--Modal para del boton de nuevo, se captura la fecha, se coloca la placa y se selecciona el tipo de vehiculo-->
+
+<!--Tabla donde se cargan los vehiculos registrados-->
+
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered border-primary" id="table-record">
+            <thead>
+              <tr>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Tipo Vehiculo</th>
+                <th scope="col">placa</th>
+                <th scope="col">Hora Inicial</th>
+                <th scope="col">Hora Final</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Accion</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (record of recordList; track record; let i = $index) {
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ record.typeVehicle }}</td>
+                <td>{{ record.placa }}</td>
+                <td>{{ record.starDate }}</td>
+                <td>{{ record.endDate }}</td>
+                <td>{{ record.price }}</td>
+                <td>
+                  <button class="btn btn-warning btn-sm" (click)="checkIn()">
+                    Salida
+                  </button>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+          <div>
+            <button
+              class="btn btn-primary btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#my-modal"
+              (click)="resetForm()"
+            >
+              Nuevo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Tabla donde se cargan los vehiculos registrados-->
+
+<!--Modal para del boton de salida, se captura la fecha y se calcula el precio-->
+<form #formulario="ngForm" (submit)="onSubmit(formulario.value)">
+  <div
+    class="modal fade"
+    id="my-modalSalida"
+    tabindex="-1"
+    aria-labelledby="my-modal-label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="my-modal-label">Vehiculo</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          @for (item of typeList; track item; let i = $index) { }
+          <!--
+          @for (item of typeList; track $index) {
+          
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              [name]="'typeVehicle'"
+              [id]="$index"
+              [value]="$index + 1"
+              ngModel
+            />
+            <label class="form-check-label" [for]="$index">
+              {{ item.name }}
+            </label>
+          </div>
+          }
+          <div class="mb-3">
+            <label for="placa" class="col-form-label">Placa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="placa"
+              name="placa"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="hora-ini" class="col-form-label"
+              >Fecha y Hora inicial</label
+            >
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              id="hora-ini"
+              name="starDate"
+              [(ngModel)]="fechaHoraActual"
+            />
+          </div>
+          -->
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!--Modal para del boton de salida, se captura la fecha y se calcula el precio-->

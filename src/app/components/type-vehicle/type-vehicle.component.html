@@ -1,0 +1,89 @@
+<form #formulario="ngForm" (submit)="onSubmit(formulario.value)">
+  <div
+    class="modal fade"
+    id="my-modal"
+    tabindex="-1"
+    aria-labelledby="my-modal-label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="my-modal-label">Nuevo Tipo DeVehiculo</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="placa" class="col-form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="name"
+              ngModel
+            />
+          </div>
+          <div class="mb-3">
+            <label for="placa" class="col-form-label">Precio</label>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              name="price"
+              ngModel
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered border-primary">
+            <thead>
+              <tr>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (type of typeVehicleList; track type; let i = $index) {
+              <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ type.name }}</td>
+                <td>{{ type.price }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
+          <div>
+            <button
+              class="btn btn-primary btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#my-modal"
+              (click)="resetForm()"
+            >
+              Nuevo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
